@@ -1,0 +1,64 @@
+{
+    "title": "who dey check am",
+    "questions": [
+        {
+            "id": 1,
+            "question_number": 1,
+            "text": "question text",
+            "correct_option": "A",
+            "options": [
+                {
+                    "letter": "A",
+                    "text": "who dey check am"
+                },
+                {
+                    "letter": "B",
+                    "text": "who dey check am again"
+                },
+                {
+                    "letter": "C",
+                    "text": "who dey check am again and again"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "question_number": 2,
+            "text": "question text",
+            "correct_option": "C",
+            "options": [
+                {
+                    "letter": "A",
+                    "text": "who dey check am"
+                },
+                {
+                    "letter": "B",
+                    "text": "who dey check am"
+                },
+                {
+                    "letter": "C",
+                    "text": "who dey check am"
+                }
+            ]
+        },
+        {
+            "question_number": 3,
+            "text": "question text",
+            "correct_option": "B",
+            "options": [
+                {
+                    "letter": "A",
+                    "text": "who dey check am"
+                },
+                {
+                    "letter": "B",
+                    "text": "who dey check am"
+                },
+                {
+                    "letter": "C",
+                    "text": "who dey check am"
+                }
+            ]
+        }
+    ]
+}

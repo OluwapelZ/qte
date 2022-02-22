@@ -1,0 +1,8 @@
+{
+    "users": {
+        "_id": "mongo_generated_id",
+        "firstname": "Hey you",
+        "lastname": "hey hey you",
+        "email": "hey hey you you (unique)"
+    }
+}

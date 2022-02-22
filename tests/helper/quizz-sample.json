@@ -1,0 +1,55 @@
+{
+    "_id": "mongo_generated",
+    "user_mongo_id": "mongo_generated_id",
+    "quiz_title": "Who dey check am",
+    "total_questions": 15,
+    "stats": [
+        {
+            "quiz_taker_user_id": "user_generated_id(_id) (nullable)",
+            "quiz_user_name": "name (signed up or not)",
+            "attempted": 3,
+            "score": 2,
+            "percentage": 13.33
+        }
+    ],
+    "questions": [
+        {
+            "id": "question_own_generated",
+            "text": "question text",
+            "correct_option": "A",
+            "options": [
+                {
+                    "letter": "A",
+                    "text": "who dey check am"
+                },
+                {
+                    "letter": "B",
+                    "text": "who dey check am again"
+                },
+                {
+                    "letter": "C",
+                    "text": "who dey check am again and again"
+                }
+            ]
+        },
+        {
+            "id": "question_own_generated",
+            "text": "question text",
+            "correct_option": "C",
+            "options": [
+                {
+                    "letter": "A",
+                    "text": "who dey check am"
+                },
+                {
+                    "letter": "B",
+                    "text": "who dey check am"
+                },
+                {
+                    "letter": "C",
+                    "text": "who dey check am"
+                }
+            ]
+        }
+    ]
+}
