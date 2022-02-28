@@ -3,9 +3,9 @@ import QuizModel from './quiz.model';
 export default class QuizService {
     constructor() {}
 
-    async createQuiz(quizData) {
+    async createQuiz(quizData, userId) {
         const quiz = await QuizModel.create({
-            user_id: quizData.userId,
+            user_id: userId,
             title: quizData.title,
             total_questions: quizData.questions.length,
             stats: [],
@@ -17,8 +17,9 @@ export default class QuizService {
         .catch((err) => { throw err });
     }
 
-    async fetchQuizzes() {
-        return await QuizModel.find({});
+    async fetchQuizzes(userId) {
+        console.log(userId)
+        return await QuizModel.find({ user_id: { $ne: userId } });
     }
 
     async fetchQuizById(quizObjectId) {

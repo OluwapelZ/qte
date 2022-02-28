@@ -3,7 +3,6 @@ import { questionSchema } from './question.schema';
 
 export const createQuizSchema = yup.object().shape({
     title: yup.string().required('Enter quiz title'),
-    userId: yup.string().required('Enter user (generated) id'),
     questions: yup.array().of(questionSchema).required('Quiz must have at least one question')
 });
 

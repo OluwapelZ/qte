@@ -147,3 +147,15 @@ Questions:
 - User can view basic stats on quiz attempts/completion/scores e.t.c
     - Is this stats for a user to see stats of all quizzes attempted or
     - For users to see stats of everyone that has taken his/her quizzes over time.
+
+    ## Start Application
+    #### With Docker
+    On initial Run
+    `docker-compose build`
+    then: 
+    `docker-compose up`
+
+    On Subsequent run just `docker-compose up` does the trick
+
+    #### Without Docker
+    `yarn start:dev`

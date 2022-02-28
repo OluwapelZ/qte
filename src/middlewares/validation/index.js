@@ -1,7 +1,7 @@
 import { ValidationErrorWithData } from "../../utils/api-repsonse";
 import { objectIdSchema } from "./schemas/objectI.id.schema";
 import { createQuizSchema, submitQuizSchema } from "./schemas/quiz.schema";
-import { userSchema,  } from "./schemas/user.schema";
+import { userLoginSchema, userSchema,  } from "./schemas/user.schema";
 
 export const validateCreateUser = (req, res, next) => {
     userSchema.validate(req.body)
@@ -19,13 +19,19 @@ export const validateQuizCreation = async (req, res, next) => {
 
 export const validateSubmitQuiz = (req, res, next) => {
     submitQuizSchema.validate(req.body)
-    .catch((err) => ValidationErrorWithData(res, err.errors) );
+    .catch((err) => ValidationErrorWithData(res, err.errors));
     next();
 }
 
 export const validateId = (req, res, next) => {
     const id = req.params.id || req.body.id;
     objectIdSchema.validate({ id })
-    .catch((err) => ValidationErrorWithData(res, err.errors) );
+    .catch((err) => ValidationErrorWithData(res, err.errors));
+    next();
+}
+
+export const validateUserLogin = (req, res, next) => {
+    userLoginSchema.validate(req.body)
+    .catch((err) => ValidationErrorWithData(res, err.errors));
     next();
 }

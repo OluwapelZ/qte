@@ -50,3 +50,12 @@ export const UnauthorizedResponse = (res, msg) => {
 	};
 	return res.status(401).json(data);
 };
+
+export const ConflictDataResponse = (res, msg) => {
+    const data = {
+        status: false,
+        message: msg,
+        data: null
+    };
+    return res.status(409).json(data);
+};
