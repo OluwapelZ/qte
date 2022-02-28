@@ -8,7 +8,7 @@ export default class QuizController {
     async createQuiz(req, res) {
         try {
             const quizService = new QuizService();
-            await quizService.createQuiz(req.body);
+            await quizService.createQuiz(req.body, req.user);
             SuccessResponse(res, CONSTANTS.SUCCESSFULLY_CREATED_QUIZ);
         } catch (error) {
             ErrorResponse(res, JSON.stringify(error));
@@ -18,7 +18,7 @@ export default class QuizController {
     async fetchQuizzes(req, res) {
         try {
             const quizService = new QuizService();
-            const quizzes = await quizService.fetchQuizzes();
+            const quizzes = await quizService.fetchQuizzes(req.user);
             SuccessResponseWithData(res, '', quizzes)
         } catch (error) {
             ErrorResponse(res, JSON.stringify(error));
