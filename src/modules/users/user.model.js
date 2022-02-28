@@ -7,11 +7,18 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: [true, 'Please enter user\'s email'],
     },
+    token: { type: String },
+    password: {
+        type: String,
+        required: [true, 'Please enter user\'s password']
+    },
 }, { 
     timestamps: true,
     toJSON: {
         transform: ((doc, ret) => {
             delete ret.__v;
+            delete ret._id;
+            delete ret.password;
         })
     }
 });

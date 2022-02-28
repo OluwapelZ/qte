@@ -1,31 +1,64 @@
+import { tokenizeUser } from '../../utils/jwt';
 import QuizModel from '../quizzes/quiz.model';
+import * as bcrypt from 'bcryptjs';
 import UserModel from './user.model';
 
 export default class UserService {
     constructor() {}
     
     async createUser(userData) {
-        const { firstname, lastname, email } = userData;
-        const user = UserModel.create({ firstname, lastname, email });
-        return await user.save()
-        .then((user => {
-            return {
-                _id: user._id,
-                firstname: user.firstname,
-                lastname: user.lastname,
-                email: user.email,
-            }
-        }))
-        .catch((err) => { throw err });
-    }
+        const { firstname, lastname, email, password } = userData;
 
-    async fetchUsers() {
-        return await UserModel.find({});
+        const isUserExisting = await UserModel.findOne({ email });
+        if (isUserExisting) {
+            return { status: false }
+        }
+
+        const encryptedPassword = await bcrypt.hash(password, 10);
+        const user = await UserModel.create({
+            firstname,
+            lastname,
+            email,
+            password: encryptedPassword
+        });
+
+        user.token = tokenizeUser(user._id);
+        const createdUser = await user.save()
+        .then((user => user))
+        .catch((err) => { throw err });
+
+        return {
+            status: true,
+            data: createdUser
+        };
     }
 
     async fetchUserQuizes(userId) {
-        const check = await QuizModel.find({ user_id: userId });
-        return check
+        return await QuizModel.find({ user_id: userId });
+    }
+
+    async userLogin(loginData) {
+        // Destructure user login data
+        const { email, password } = loginData;
+        const user = await UserModel.findOne({ email });
+        if (!user) {
+            return { status: false };
+        }
+
+        const isValidpassword = await bcrypt.compare(password, user.password);
+        if (!isValidpassword) {
+            return { status: false };
+        }
+
+        user.token = tokenizeUser(user._id, user.roleId);
+
+        await user.save()
+        .catch(err => { throw err });
+
+        return {
+            status: true,
+            data: user
+        };
     }
 
 }

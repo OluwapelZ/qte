@@ -11,7 +11,8 @@ const QuizSchema = mongoose.Schema({
 }, {
     toJSON: {
         transform: ((doc, ret) => {
-            delete ret.__v
+            delete ret.__v,
+            delete ret.user_id
         })
     }
 });
