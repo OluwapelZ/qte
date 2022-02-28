@@ -1,0 +1,245 @@
+{
+	"info": {
+		"_postman_id": "83f2ad93-91da-4dbd-a948-186a6f16f0af",
+		"name": "absence",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstname\": \"Oluwapelumi\",\n    \"lastname\": \"Olaoye\",\n    \"email\": \"pelex3@yopmail.com\",\n    \"password\": \"Ifeoluw@kitan1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/user",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch User Quizzes",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/user/quiz",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user",
+								"quiz"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"pelex2@yopmail.com\",\n    \"password\": \"Ifeoluw@kitan1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/user/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "quiz",
+			"item": [
+				{
+					"name": "Publish Quiz",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"who dey check am quiz 4 (new)\",\n    \"questions\": [\n        {\n            \"id\": 1,\n            \"question_number\": 1,\n            \"text\": \"Question One for fourth paper\",\n            \"correct_option\": \"A\",\n            \"options\": [\n                {\n                    \"letter\": \"A\",\n                    \"text\": \"Option One\"\n                },\n                {\n                    \"letter\": \"B\",\n                    \"text\": \"Option Two\"\n                },\n                {\n                    \"letter\": \"C\",\n                    \"text\": \"Option Three\"\n                }\n            ]\n        },\n        {\n            \"id\": 2,\n            \"question_number\": 2,\n            \"text\": \"Question Two for fourth paper\",\n            \"correct_option\": \"C\",\n            \"options\": [\n                {\n                    \"letter\": \"A\",\n                    \"text\": \"Option One\"\n                },\n                {\n                    \"letter\": \"B\",\n                    \"text\": \"Option Two\"\n                },\n                {\n                    \"letter\": \"C\",\n                    \"text\": \"Option Three\"\n                }\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/quiz",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"quiz"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch Quizzes",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/quiz",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"quiz"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch Quiz By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/quiz/621d54de763681b10947b556",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"quiz",
+								"621d54de763681b10947b556"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Submit quiz result",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"quiz_user_fullname\": \"Oluwapelumi Heyyou\",\n    \"answers\": [\n        {\n            \"question_id\": 1,\n            \"selected_option\": \"B\",\n            \"correct\": true\n        },\n        {\n            \"question_id\": 2,\n            \"selected_option\": \"A\",\n            \"correct\": false\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/quiz/result/621d54de763681b10947b556",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"quiz",
+								"result",
+								"621d54de763681b10947b556"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch quiz stats by quiz id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/quiz/stat/6212d2cb7d19bf3d688b8a2f",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"quiz",
+								"stat",
+								"6212d2cb7d19bf3d688b8a2f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Health Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/health",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"health"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
